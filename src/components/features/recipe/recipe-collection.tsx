@@ -81,7 +81,7 @@ export function RecipeCollection() {
           <Button onClick={openForm}>Add Recipe</Button>
         </div>
         {error && <p role="alert" className="mb-4 text-sm text-red-600">{error}</p>}
-        {recipes.length === 0 ? <div className="rounded-xl border border-dashed border-line bg-paper px-6 py-16 text-center"><h3 className="text-2xl font-semibold text-ink">A fresh page for your favorites</h3><p className="mt-2 text-sm text-muted">Save a family classic or something new you want to try.</p><Button className="mt-6" onClick={openForm}>Add your first recipe</Button></div> :
+        {recipes.length === 0 ? <div className="rounded-xl border border-dashed border-line bg-paper px-6 py-16 text-center shadow-card md:py-20"><span className="mx-auto mb-5 block h-[2px] w-12 rounded-full bg-gold" aria-hidden="true" /><h3 className="text-2xl font-semibold text-ink">A fresh page for your favorites</h3><p className="mx-auto mt-2 max-w-md text-sm text-muted">Save a family classic or something new you want to try.</p><Button className="mt-6" onClick={openForm}>Add your first recipe</Button></div> :
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
             {recipes.map((recipe) => <RecipeCard key={recipe.id} {...recipe} onDelete={handleDelete} />)}
           </div>}

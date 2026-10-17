@@ -19,6 +19,8 @@
 
   --shadow-soft: 0 8px 24px rgb(64 8 18 / 0.07);
   --shadow-lift: 0 18px 38px rgb(64 8 18 / 0.13);
+  /* Layered surface shadow for cards: a crisp contact edge plus a soft cast. */
+  --shadow-card: 0 1px 2px rgb(64 8 18 / 0.05), 0 14px 30px -18px rgb(64 8 18 / 0.24);
   --animate-fade-in: fade-in 280ms ease-out;
   --animate-rise: rise 360ms ease-out;
 }
