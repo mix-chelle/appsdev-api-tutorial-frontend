@@ -81,4 +81,3 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Every child inside AuthProvider can now access these values.
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
-

@@ -77,12 +77,12 @@ export function RecipeCollection() {
     <><>
         {/* Collection heading and primary action wrap on narrow screens. */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <div><h2 className="text-2xl font-semibold tracking-tight">Your recipes</h2><p className="mt-1 text-sm text-emerald-950/60">{recipes.length} saved {recipes.length === 1 ? "recipe" : "recipes"} to inspire your next meal</p></div>
+          <div><h2 className="text-2xl font-semibold tracking-tight text-ink">Your recipes</h2><p className="mt-1 text-sm text-muted">{recipes.length} saved {recipes.length === 1 ? "recipe" : "recipes"} to inspire your next meal</p></div>
           <Button onClick={openForm}>Add Recipe</Button>
         </div>
         {error && <p role="alert" className="mb-4 text-sm text-red-600">{error}</p>}
-        {recipes.length === 0 ? <div className="rounded-2xl border border-dashed border-emerald-900/25 bg-[#f7f8f0] px-6 py-16 text-center"><h3 className="text-xl font-semibold">A fresh page for your favorites</h3><p className="mt-2 text-sm text-emerald-950/65">Save a family classic or something new you want to try.</p><Button className="mt-6" onClick={openForm}>Add your first recipe</Button></div> :
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {recipes.length === 0 ? <div className="rounded-xl border border-dashed border-line bg-paper px-6 py-16 text-center"><h3 className="text-2xl font-semibold text-ink">A fresh page for your favorites</h3><p className="mt-2 text-sm text-muted">Save a family classic or something new you want to try.</p><Button className="mt-6" onClick={openForm}>Add your first recipe</Button></div> :
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
             {recipes.map((recipe) => <RecipeCard key={recipe.id} {...recipe} onDelete={handleDelete} />)}
           </div>}
         {/* Add the saved recipe to local state so the list updates immediately. */}

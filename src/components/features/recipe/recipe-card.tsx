@@ -18,13 +18,13 @@ type RecipeCardProps = {
 
 export default function RecipeCard({id, image, name, cuisine, mealType, difficulty, cookTimeMinutes, tags, onDelete}: RecipeCardProps) {
   return (
-    <Card className="group flex h-full flex-col transition-shadow hover:shadow-lg hover:shadow-emerald-950/10">
-      <div className="h-56 overflow-hidden bg-emerald-100">
-        <img src={image} alt={name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+    <Card className="group flex h-full flex-col transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-[3px] hover:border-gold hover:shadow-lift motion-reduce:transform-none">
+      <div className="h-56 overflow-hidden bg-parchment">
+        <img src={image} alt={name} className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
       </div>
 
       <div className="flex flex-1 flex-col gap-4 p-5">
-        <h3 className="text-lg font-semibold tracking-tight text-emerald-950">{name}</h3>
+        <h3 className="text-xl font-semibold tracking-tight text-ink">{name}</h3>
 
         <RecipeMeta
           cuisine={cuisine}
@@ -40,10 +40,10 @@ export default function RecipeCard({id, image, name, cuisine, mealType, difficul
         </div>
 
         <div className="grid grid-cols-2 gap-2 mt-auto pt-2">
-          <Link to={`/recipe/${id}`}>
+          <Link to={`/recipe/${id}`} className="w-full">
             <Button className="w-full">View</Button>
           </Link>
-          <Button onClick={() => onDelete(id)} className="bg-rose-50 text-rose-700 hover:bg-rose-100">
+          <Button variant="secondary" onClick={() => onDelete(id)}>
             Delete
           </Button>
         </div>

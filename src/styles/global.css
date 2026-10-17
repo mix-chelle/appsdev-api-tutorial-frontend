@@ -1,8 +1,83 @@
 @import "tailwindcss";
 
-body {
-  margin: 0;
-  min-width: 320px;
-  background: #e7eee2;
-  color: #143b30;
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Lora, Georgia, Cambria, "Times New Roman", serif;
+
+  /* Editorial palette: deep burgundy, warm ivory, muted gold. */
+  --color-burgundy: #570d19;
+  --color-wine: #400812;
+  --color-claret: #761b2a;
+  --color-ivory: #f6f0e5;
+  --color-parchment: #ede4d6;
+  --color-paper: #fffcf6;
+  --color-gold: #d6ac43;
+  --color-gold-soft: #e5c96f;
+  --color-ink: #292521;
+  --color-muted: #81776d;
+  --color-line: #d8ccbb;
+
+  --shadow-soft: 0 8px 24px rgb(64 8 18 / 0.07);
+  --shadow-lift: 0 18px 38px rgb(64 8 18 / 0.13);
+  --animate-fade-in: fade-in 280ms ease-out;
+  --animate-rise: rise 360ms ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: #f6f0e5;
+    color: #292521;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Serif headings carry the editorial voice; body text stays sans-serif. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

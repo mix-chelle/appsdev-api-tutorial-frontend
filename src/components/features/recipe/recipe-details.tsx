@@ -60,14 +60,14 @@ export function RecipeDetails({ id }: { id: string }) {
     <>
       {error ? <p role="alert" className="mt-6 text-sm text-red-600">{error}</p> : recipe && <>
         {/* Keep image, metadata, and cooking steps grouped in one detail card. */}
-        <Card className="mt-6 overflow-hidden shadow-lg shadow-emerald-950/5">
-          <div className="bg-emerald-100"><img className="h-64 w-full object-cover sm:h-[440px]" src={recipe.image} alt={recipe.name} /></div>
-          <div className="space-y-8 p-6 sm:p-10">
-            <div className="flex flex-wrap items-center justify-between gap-4"><h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{recipe.name}</h1><Button onClick={openForm}>Update</Button></div>
+        <Card className="mt-6 overflow-hidden shadow-soft">
+          <div className="bg-parchment"><img className="h-64 w-full object-cover md:h-[440px]" src={recipe.image} alt={recipe.name} /></div>
+          <div className="space-y-8 p-6 md:p-10">
+            <div className="flex flex-wrap items-center justify-between gap-4"><h1 className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">{recipe.name}</h1><Button onClick={openForm}>Update</Button></div>
             <RecipeMeta cuisine={recipe.cuisine} mealType={recipe.mealType} difficulty={recipe.difficulty} cookTimeMinutes={recipe.cookTimeMinutes} />
             <div className="flex flex-wrap gap-2">{recipe.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}</div>
-            <div><h2 className="mb-3 text-lg font-semibold">Ingredients</h2><ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-emerald-950/75">{recipe.ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></div>
-            <div><h2 className="mb-3 text-lg font-semibold">Instructions</h2><ol className="list-decimal space-y-3 pl-5 text-sm leading-7 text-emerald-950/75">{recipe.instructions.map((instruction, index) => <li key={`${instruction}-${index}`}>{instruction}</li>)}</ol></div>
+            <div><h2 className="mb-3 text-xl font-semibold text-ink">Ingredients</h2><ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-ink/80 marker:text-burgundy/70">{recipe.ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></div>
+            <div><h2 className="mb-3 text-xl font-semibold text-ink">Instructions</h2><ol className="list-decimal space-y-3 pl-5 text-sm leading-7 text-ink/80 marker:text-burgundy/70">{recipe.instructions.map((instruction, index) => <li key={`${instruction}-${index}`}>{instruction}</li>)}</ol></div>
           </div>
         </Card>
         {/* The modal reuses the recipe form and updates this page after saving. */}

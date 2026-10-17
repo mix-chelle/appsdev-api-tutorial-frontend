@@ -7,14 +7,14 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variants = {
-  primary: "bg-emerald-900 text-amber-50 hover:bg-emerald-950",
-  secondary: "border border-emerald-900/20 bg-emerald-50 text-emerald-900 hover:bg-emerald-100",
-  tertiary: "text-emerald-800 hover:text-emerald-950",
+  primary: "bg-burgundy text-ivory hover:bg-wine",
+  secondary: "border border-line bg-paper text-burgundy hover:border-burgundy/40 hover:bg-parchment",
+  tertiary: "text-burgundy hover:text-claret",
 };
 
 export function Button({ variant = "primary", className, children, type = "button", ...props }: ButtonProps) {
   return (
-    <button type={type} className={cn("cursor-pointer rounded-xl px-4 py-2.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-700 disabled:cursor-not-allowed disabled:opacity-60", variants[variant], className)} {...props}>
+    <button type={type} className={cn("inline-flex min-h-11 cursor-pointer items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium tracking-wide transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-px focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 motion-reduce:transform-none", variants[variant], className)} {...props}>
       {children}
     </button>
   );

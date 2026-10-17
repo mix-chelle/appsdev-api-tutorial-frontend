@@ -53,14 +53,14 @@ export function AdminRecipes() {
   return (
     <section aria-label="All recipes">
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-        <p>{loading ? "Loading recipes…" : `${recipes.length} recipes across all users`}</p>
+        <p className="text-sm text-muted">{loading ? "Loading recipes…" : `${recipes.length} recipes across all users`}</p>
         <Button variant="secondary" disabled={loading} onClick={handleRefresh}>
           Refresh
         </Button>
       </div>
 
       {error ? (
-        <p role="alert" className="rounded-xl bg-rose-50 p-4 text-rose-700">{error}</p>
+        <p role="alert" className="rounded-xl border border-line bg-paper p-4 text-red-700">{error}</p>
       ) : (
         <AdminRecipesTable recipes={recipes} loading={loading} />
       )}

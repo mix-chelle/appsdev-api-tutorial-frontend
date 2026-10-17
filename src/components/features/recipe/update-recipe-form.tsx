@@ -44,7 +44,7 @@ export default function UpdateRecipeForm({ recipe, onSuccess }: UpdateRecipeForm
 
   // One column on phones, two on larger screens; separate row and column gaps.
   return (
-    <form onSubmit={handleUpdateRecipe} className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
+    <form onSubmit={handleUpdateRecipe} className="grid grid-cols-1 gap-x-6 gap-y-5 md:grid-cols-2">
       <div>
         <Label htmlFor="update-recipe-name">Name</Label>
         <Input id="update-recipe-name" type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -67,18 +67,18 @@ export default function UpdateRecipeForm({ recipe, onSuccess }: UpdateRecipeForm
         <Input id="update-recipe-cook-time" type="number" min="0" value={cookTimeMinutes} onChange={(e) => setCookTimeMinutes(Number(e.target.value))} />
       </div>
 
-      <div className="sm:col-span-2">
+      <div className="md:col-span-2">
         <Label htmlFor="update-recipe-ingredients">Ingredients (one per line)</Label>
         <Textarea id="update-recipe-ingredients" value={ingredients} onChange={(e) => setIngredients(e.target.value)} rows={5} />
       </div>
 
-      <div className="sm:col-span-2">
+      <div className="md:col-span-2">
         <Label htmlFor="update-recipe-instructions">Instructions (one per line)</Label>
         <Textarea id="update-recipe-instructions" value={instructions} onChange={(e) => setInstructions(e.target.value)} rows={5} />
       </div>
 
-      {error && <p role="alert" className="text-sm text-red-600 sm:col-span-2">{error}</p>}
-      <Button type="submit" className="w-full sm:col-span-2">
+      {error && <p role="alert" className="text-sm text-red-600 md:col-span-2">{error}</p>}
+      <Button type="submit" className="w-full md:col-span-2">
         Save Changes
       </Button>
     </form>

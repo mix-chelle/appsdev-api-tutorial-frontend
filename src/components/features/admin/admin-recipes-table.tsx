@@ -28,7 +28,7 @@ export function AdminRecipesTable({ recipes, loading }: AdminRecipesTableProps) 
       <tbody>
         {!loading && recipes.length === 0 && (
           <tr>
-            <td colSpan={7} className="text-center">No recipes have been created yet.</td>
+            <td colSpan={7} className="text-center text-muted">No recipes have been created yet.</td>
           </tr>
         )}
         {recipes.map(function renderRecipe(recipe) {
@@ -37,7 +37,7 @@ export function AdminRecipesTable({ recipes, loading }: AdminRecipesTableProps) 
               <td>
                 <div className="flex min-w-48 items-center gap-3">
                   <img src={recipe.image} alt="" className="h-12 w-12 rounded-lg object-cover" />
-                  <span className="font-medium">{recipe.name}</span>
+                  <span className="font-medium text-ink">{recipe.name}</span>
                 </div>
               </td>
               <td>{recipe.cuisine}</td>

@@ -22,7 +22,7 @@ export default function HomePage() {
     <Section>
       <PageHeader eyebrow="Your kitchen companion" title="Recipe Book" description="Keep your favorite meals in one place.">
         <div className="flex flex-wrap items-center gap-4">
-          <span>{user?.name}</span>
+          <span className="text-sm text-ivory/90">{user?.name}</span>
           <Button variant="secondary" onClick={handleLogout}>Sign out</Button>
         </div>
       </PageHeader>

@@ -51,7 +51,7 @@ export function LoginForm() {
       </div>
 
       {error && <p role="alert" className="text-sm text-red-600">{error}</p>}
-      <Button type="submit" disabled={busy} className="mt-1 bg-emerald-900 py-3 font-medium hover:bg-emerald-950 disabled:cursor-wait disabled:opacity-60">{busy ? "Please wait…" : "Sign in"}</Button>
+      <Button type="submit" disabled={busy} className="mt-1 py-3 disabled:cursor-wait">{busy ? "Please wait…" : "Sign in"}</Button>
     </form>
   );
 }

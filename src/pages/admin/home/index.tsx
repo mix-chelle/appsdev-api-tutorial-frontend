@@ -22,7 +22,7 @@ export default function AdminPage() {
     <Section>
       <PageHeader eyebrow="Recipe Book · Administration" title="All recipes" description="Browse recipes across every account.">
         <div className="flex flex-wrap items-center gap-4">
-          <span>{user?.name}</span>
+          <span className="text-sm text-ivory/90">{user?.name}</span>
           <Button variant="secondary" onClick={handleLogout}>Sign out</Button>
         </div>
       </PageHeader>

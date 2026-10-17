@@ -7,7 +7,7 @@ export default function AuthLayout() {
 
   if (ready && user) return <Navigate to={user.role === "ADMIN" ? "/admin" : "/user"} replace />;
   return (
-    <main className="flex min-h-svh items-center justify-center bg-[radial-gradient(ellipse_at_top,_#245c4c,_#102e28_65%)] px-4 py-12">
+    <main className="flex min-h-svh items-center justify-center bg-[radial-gradient(ellipse_at_top,_#e6d8c4,_#f6f0e5_62%)] px-4 py-12">
       <div className="w-full max-w-md">
         <AuthHeader />
         {ready && <Outlet />}
