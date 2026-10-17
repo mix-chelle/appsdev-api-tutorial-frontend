@@ -59,21 +59,35 @@ export function RecipeDetails({ id }: { id: string }) {
   return (
     <>
       {error ? <p role="alert" className="mt-6 text-sm text-red-600">{error}</p> : recipe && <>
-        {/* Keep image, metadata, and cooking steps grouped in one detail card. */}
+        {/* One detail card pairs the overview with the cooking sections. */}
         <Card className="mt-6">
-          <div className="border-b border-line bg-parchment"><img className="h-64 w-full object-cover md:h-[440px]" src={recipe.image} alt={recipe.name} /></div>
-          <div className="space-y-8 p-6 md:p-10">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <h1 className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">{recipe.name}</h1>
-                <span className="mt-3 block h-[2px] w-12 rounded-full bg-gold" aria-hidden="true" />
+          <div className="grid gap-8 p-5 md:grid-cols-2 md:p-8 lg:gap-12 lg:p-10">
+            {/* Overview column: featured image, overlapping title, and quick facts. */}
+            <div className="space-y-6">
+              <div className="relative">
+                <div className="overflow-hidden rounded-2xl bg-parchment">
+                  <img className="block aspect-[4/3] w-full object-cover" src={recipe.image} alt={recipe.name} />
+                </div>
+                {/* Title panel overlaps the image, echoing the reference card. */}
+                <div className="relative z-10 mx-3 -mt-10 rounded-xl border border-line bg-paper p-4 shadow-lift md:mx-4 md:-mt-12 md:p-5">
+                  <h1 className="text-2xl font-semibold tracking-tight text-ink md:text-3xl">{recipe.name}</h1>
+                </div>
               </div>
-              <Button onClick={openForm}>Update</Button>
+              <RecipeMeta cuisine={recipe.cuisine} mealType={recipe.mealType} difficulty={recipe.difficulty} cookTimeMinutes={recipe.cookTimeMinutes} />
+              <div className="flex flex-wrap gap-2">{recipe.tags.map((tag) => <Tag key={tag} className="rounded-full">{tag}</Tag>)}</div>
+              <div><Button className="rounded-full" onClick={openForm}>Update</Button></div>
             </div>
-            <RecipeMeta cuisine={recipe.cuisine} mealType={recipe.mealType} difficulty={recipe.difficulty} cookTimeMinutes={recipe.cookTimeMinutes} />
-            <div className="flex flex-wrap gap-2">{recipe.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}</div>
-            <div><h2 className="mb-3 text-xl font-semibold text-ink">Ingredients</h2><ul className="list-disc space-y-2 pl-5 text-sm leading-7 text-ink/80 marker:text-burgundy/70">{recipe.ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul></div>
-            <div><h2 className="mb-3 text-xl font-semibold text-ink">Instructions</h2><ol className="list-decimal space-y-3 pl-5 text-sm leading-7 text-ink/80 marker:text-burgundy/70">{recipe.instructions.map((instruction, index) => <li key={`${instruction}-${index}`}>{instruction}</li>)}</ol></div>
+            {/* Details column: ingredients and instructions as separated sections. */}
+            <div className="space-y-8 lg:space-y-10">
+              <section>
+                <h2 className="text-xl font-semibold text-ink">Ingredients</h2>
+                <ul className="mt-4 list-disc space-y-2 pl-5 text-sm leading-7 text-ink/80 marker:text-burgundy/70">{recipe.ingredients.map((ingredient, index) => <li key={`${ingredient}-${index}`}>{ingredient}</li>)}</ul>
+              </section>
+              <section className="border-t border-line pt-8 lg:pt-10">
+                <h2 className="text-xl font-semibold text-ink">Instructions</h2>
+                <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-7 text-ink/80 marker:text-burgundy/70">{recipe.instructions.map((instruction, index) => <li key={`${instruction}-${index}`}>{instruction}</li>)}</ol>
+              </section>
+            </div>
           </div>
         </Card>
         {/* The modal reuses the recipe form and updates this page after saving. */}
